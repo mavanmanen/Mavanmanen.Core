@@ -17,15 +17,9 @@ jobs:
       with:
         dotnet-version: 6.0.x
         include-prerelease: true
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
     - name: Publish to NuGet
       uses: brandedoutcast/publish-nuget@v2
       with:
         PROJECT_FILE_PATH: "Mavanmanen.Core.Wpf/Mavanmanen.Core.Wpf.csproj"
-        VERSION_REGEX: '^\s*<Version>(.*)<\/Version>\s*$'
+        VERSION_REGEX: '^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
