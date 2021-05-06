@@ -7,9 +7,24 @@ on:
     branches: [ master ]
 
 jobs:
-  CI:
+  Mavanmanen.Core:
     runs-on: ubuntu-latest
-
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+        include-prerelease: true
+    - name: Publish to NuGet
+      uses: brandedoutcast/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: "Mavanmanen.Core/Mavanmanen.Core.csproj"
+        VERSION_REGEX: '^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$'
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        
+  Mavanmanen.Core.Wpf:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
