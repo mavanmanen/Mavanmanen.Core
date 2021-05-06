@@ -23,5 +23,9 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Publish
-      run: dotnet publish
+    - name: Publish to NuGet
+      uses: brandedoutcast/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: "src/Mavanmanen.Core.*/Mavanmanen.Core.*.csproj"
+        VERSION_REGEX: '^\s*<Version>(.*)<\/Version>\s*$'
+        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
