@@ -7,8 +7,11 @@ on:
     branches: [ master ]
 
 jobs:
-  Mavanmanen_Core:
+  CI:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: ["Mavanmanen.Core/Mavanmanen.Core.csproj", "Mavanmanen.Core.Wpf/Mavanmanen.Core.Wpf.csproj"]
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -19,22 +22,7 @@ jobs:
     - name: Publish to NuGet
       uses: brandedoutcast/publish-nuget@v2
       with:
-        PROJECT_FILE_PATH: "Mavanmanen.Core/Mavanmanen.Core.csproj"
+        PROJECT_FILE_PATH: ${{ matrix.project }}
         VERSION_REGEX: '^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-        
-  Mavanmanen_Core_Wpf:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.x
-        include-prerelease: true
-    - name: Publish to NuGet
-      uses: brandedoutcast/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH: "Mavanmanen.Core.Wpf/Mavanmanen.Core.Wpf.csproj"
-        VERSION_REGEX: '^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$'
-        NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+        TAG_COMMIT: false
