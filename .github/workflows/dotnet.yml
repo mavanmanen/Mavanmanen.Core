@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: ["Mavanmanen.Core/Mavanmanen.Core.csproj", "Mavanmanen.Core.Wpf/Mavanmanen.Core.Wpf.csproj"]
+        project: |
+          [
+           "Mavanmanen.Core/Mavanmanen.Core.csproj",
+           "Mavanmanen.Core.Wpf/Mavanmanen.Core.Wpf.csproj"
+          ]
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
