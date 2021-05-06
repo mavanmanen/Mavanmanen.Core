@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  Mavanmanen.Core:
+  Mavanmanen_Core:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
         VERSION_REGEX: '^\s*<PackageVersion>(.*)<\/PackageVersion>\s*$'
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
         
-  Mavanmanen.Core.Wpf:
+  Mavanmanen_Core_Wpf:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
