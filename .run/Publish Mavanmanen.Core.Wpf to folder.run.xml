@@ -1,6 +1,0 @@
-﻿<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Publish Mavanmanen.Core.Wpf to folder" type="DotNetFolderPublish" factoryName="Publish to folder" singleton="false">
-    <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/Mavanmanen.Core.Wpf/bin/Release/netstandard2.1/publish" target_framework="netstandard2.1" uuid_high="-3564052622372747590" uuid_low="-6342532706826281460" />
-    <method v="2" />
-  </configuration>
-</component>
